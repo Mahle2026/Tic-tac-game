@@ -3,6 +3,7 @@ body{
     text-align: center;
     margin: 0;
     height: 100%;
+    width: 100%;
     padding: 20px;
     background: linear-gradient(135deg, #2a004f, #c084fc);
     color: white;
