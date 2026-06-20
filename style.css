@@ -20,7 +20,8 @@ h1{
 
 .board {
     display: grid;
-    width: min(90vw, 320px);
+    width: 90vw;
+    max-width: 350px;
     grid-template-columns: repeat(3, 1fr);
     max-width: 320px;
     margin: auto;
