@@ -124,7 +124,7 @@ button:active{
         flex-direction: column;
         align-self: center;
         gap:10px;
-        margin-top: 25px;
+        margin-top: 50px;
     }
 
     button{
