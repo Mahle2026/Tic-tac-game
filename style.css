@@ -111,11 +111,10 @@ button:active{
         margin-top: 50px;
         max-width: 350px;
         gap: 8px;
-        margin-top: 80px;
+        margin-bottom: 80px;
     }
 
     .cell {
-        margin-bottom: 30px;
         font-size: 60px;
         border-radius:12px;
     }
