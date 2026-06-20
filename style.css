@@ -69,7 +69,6 @@ button {
     font-weight: bold;
     color: white;
     cursor: pointer;
-    align-items: center;
     transition: 0.2s;
     box-shadow: 0 0 10px rgba(255,110,190,0.4);
 }
@@ -89,6 +88,8 @@ button:active{
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 15px;
+    align-items: center;
+    
 }
 
 @media (max-width: 600px) {
