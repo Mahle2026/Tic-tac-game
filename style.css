@@ -106,6 +106,10 @@ button:active{
         font-size: 40px;
     }
 
+    .p{
+        color:#ff63c7;
+    }
+
     .board{
         width: 90%;
         margin-top: 50px;
