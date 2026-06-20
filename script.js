@@ -46,6 +46,9 @@ function makeMove(index, player) {
 
 function aiMove() {
     let emptyCells = board.map((value, index) => value === "" ? index : null).filter(value !== null);
+
+    if (emptyCells.length === 0) return;
+
     let randomIndex = empty[Math.floor(Math.random() * emptyCells.length)];
 
     makeMove(randomIndex, "O");
