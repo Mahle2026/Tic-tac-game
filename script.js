@@ -12,13 +12,20 @@ const winConditions = [
 [0,4,8], [2,4,6]
 ];
 
-statusText.textContent = "Your turn";
-cells.forEach((cell, index) => {
-    cell.addEventListener("click", () => {
-        if (board[index] !== "" || !gameActive) 
-            return;
+cells.forEach((cell => {
+    cell.addEventListener("click",handleClick);
+});
 
-        makeMove(index, "X");
+function handleClick() {
+       if(this.textContent !== "" || !gameActive) {
+        return;
+       }
+    
+       this.textContent = currentPlayer;
+
+        if(checkWinner()) {
+            
+        }
         
         if (gameActive) {
             statusText.textContent = "Computer is thinking...";

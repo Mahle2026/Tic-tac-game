@@ -12,7 +12,8 @@ h1{
     text-shadow: 0 0 12px #d8b4f8;
 }
 
-#status {
+.status {
+    color: #e9d5ff;
     font-size: 18px;
     margin-bottom: 15px;
 }
@@ -44,13 +45,6 @@ h1{
     box-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
-.x{
-    color: #ffffff;
-}
-
-.o{
-    color: #f0abfc;
-}
 
 .cell:hover {
     transform: scale(1.05);
