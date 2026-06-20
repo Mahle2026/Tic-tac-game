@@ -4,7 +4,6 @@ const statusText = document.getElementById("status");
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer ="X";
 let gameActive = true;
-let vsAI = false;
 
 
 const winConditions = [
@@ -13,16 +12,20 @@ const winConditions = [
 [0,4,8], [2,4,6]
 ];
 
+statusText.textContent = "Your turn";
 cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-        if (board[index] !== "" || !gameActive) return;
+        if (board[index] !== "" || !gameActive) 
+            return;
 
         makeMove(index, "X");
         
         if (gameActive) {
             statusText.textContent = "Computer is thinking...";
-            setTimeout(computerMove, 500);
-            }
+            setTimeout(() => {
+                computerMove();
+         }, 500);
+        }     
     });
 });
 
@@ -48,15 +51,14 @@ function makeMove(index, player) {
 function comptureMove() {
     let emptyCells =[];
 
-     board.forEach((value, index) =>{
-        if (value === "") {
-            emptyCells.push(index);
+     for (let i = O; i < board.length; i++) {
+        if (board[i] === "") {
+            emptyCells.push(i);
         }
-     });
+     }
 
-    if (emptyCells.length === O || !gameActive) return; 
-
-    return;
+    if (emptyCells.length === O || !gameActive) 
+        return; 
 
     let randomIndex = empty[Math.floor(Math.random() * 
         emptyCells.length)];
@@ -70,9 +72,14 @@ function comptureMove() {
 
 function checkWinner() {
     for (let combo of winConditions) {
-        let [a, b, c] = combo;
+        let a = combo[0];
+        let b = combo[1];
+        let c = combo[2];
 
-        if (board[a] !=="" && board[a] === board[b] && board[a] === board[c]){
+        if (board[a] !=="" && 
+            board[a] === board[b] && 
+            board[a] === board[c] 
+        ){
         statusText.textContent =  `${board[a]} wins 🎉`;
         gameActive = false;
         return;
@@ -92,7 +99,8 @@ function resetGame() {
 
     cells.forEach(cell =>{
         cell.textContent = "";
-        cell.style.color = "";
+        cell.classList.remove("x");
+        cell.classList.remove("o");
     });
 }
 
