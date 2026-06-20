@@ -15,15 +15,13 @@ const winConditions = [
 
 cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-        if (board[index] !== "" || !gameActive || currentPlayer !== "X") return;
+        if (board[index] !== "" || !gameActive) return;
 
         makeMove(index, "X");
         
-        if (vsAI && gameActive) {
+        if (gameActive) {
             statusText.textContent = "Computer is thinking...";
-            setTimeout(() => {
-                aiMove();  
-             }, 500);
+            setTimeout(computerMove, 500);
             }
     });
 });
@@ -47,7 +45,7 @@ function makeMove(index, player) {
     statusText.textContent = `Player ${currentPlayer}'s turn`;
 }
 
-function aiMove() {
+function comptureMove() {
     let emptyCells =[];
 
      board.forEach((value, index) =>{
@@ -64,6 +62,10 @@ function aiMove() {
         emptyCells.length)];
 
     makeMove(randomIndex, "O");
+
+    if (gameActive) {
+        statusText.textContent = "Your turn";
+    }
 }
 
 function checkWinner() {
@@ -90,14 +92,7 @@ function resetGame() {
 
     cells.forEach(cell =>{
         cell.textContent = "";
+        cell.style.color = "";
     });
 }
 
-function toggleAI() {
-    vsAI = !vsAI;
-    resetGame();
-
-    statusText.textContent = vsAI
-    ? "Playing vs AI (You = X)"
-    : "2 Player Mode";
-}
