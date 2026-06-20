@@ -8,26 +8,23 @@ let vsAI = false;
 
 
 const winConditions = [
-[0,1,2],
-[3,4,5],
-[6,7,8],
-[0,3,6],
-[1,4,7],
-[2,5,8],
-[0,4,8],
-[2,4,6]
+[0,1,2], [3,4,5], [6,7,8],
+[0,3,6], [1,4,7], [2,5,8],
+[0,4,8], [2,4,6]
 ];
 
 cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-        if (board[index] !== "" || !gameActive) return;
+        if (board[index] !== "" || !gameActive || currentPlayer !== "X") return;
 
-        makeMove(index, currentPlayer);
+        makeMove(index, "X");
         
-        if (vsAI && gameActive && currentPlayer === "O") {
+        if (vsAI && gameActive) {
             statusText.textContent = "Computer is thinking...";
-            setTimeout(aiMove, 500);
-        }
+            setTimeout(() => {
+                aiMove();  
+             }, 500);
+            }
     });
 });
 
@@ -52,17 +49,16 @@ function makeMove(index, player) {
 
 function aiMove() {
     let emptyCells =[];
+
      board.forEach((value, index) =>{
         if (value === "") {
             emptyCells.push(index);
         }
      });
 
-    if (emptyCells.length === O) {
+    if (emptyCells.length === O || !gameActive) return; 
 
     return;
-
-    }
 
     let randomIndex = empty[Math.floor(Math.random() * 
         emptyCells.length)];
@@ -74,7 +70,7 @@ function checkWinner() {
     for (let combo of winConditions) {
         let [a, b, c] = combo;
 
-        if (board[a] && board[a] === board[b] && board[a] === board[c]){
+        if (board[a] !=="" && board[a] === board[b] && board[a] === board[c]){
         statusText.textContent =  `${board[a]} wins 🎉`;
         gameActive = false;
         return;
