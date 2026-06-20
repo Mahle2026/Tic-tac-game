@@ -44,6 +44,14 @@ h1{
     box-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
+.x{
+    color: #ffffff;
+}
+
+.o{
+    color: #f0abfc;
+}
+
 .cell:hover {
     transform: scale(1.05);
     background: #a855f7;

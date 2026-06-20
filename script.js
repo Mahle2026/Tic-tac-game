@@ -36,6 +36,12 @@ function makeMove(index, player) {
     board[index] = player;
     cells[index].textContent = player;
 
+    if (player === "X") {
+        cells[index].classList.add("x");
+    } else {
+        cells[index].classList.add("o");
+    }
+
     checkWinner();
 
     if(!gameActive) return;
@@ -47,7 +53,7 @@ function makeMove(index, player) {
 function aiMove() {
     let emptyCells = board.map((value, index) => value === "" ? index : null).filter(value !== null);
 
-    if (emptyCells.length === 0) return;
+    if (emptyCells.length === O) return;
 
     let randomIndex = empty[Math.floor(Math.random() * emptyCells.length)];
 
