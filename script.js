@@ -18,7 +18,7 @@ const winConditions = [
 [2,4,6]
 ];
 
-cells.forEach((cell, index) =>{
+cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
         if (board[index] !== "" || !gameActive) return;
 
@@ -26,7 +26,7 @@ cells.forEach((cell, index) =>{
         
         if (vsAI && gameActive && currentPlayer === "O") {
             statusText.textContent = "Computer is thinking...";
-            setTimeout(aiMove, 400);
+            setTimeout(aiMove, 500);
         }
     });
 });
@@ -41,24 +41,25 @@ function makeMove(index, player) {
     if(!gameActive) return;
 
     currentPlayer = player === "X" ? "O" : "X";
-    statusText.textContent = playerTurnText();
-    
+    statusText.textContent = `Player ${currentPlayer}'s turn`;
 }
 
 function aiMove() {
-    let empty = board.map((value, index) => value === "" ? index : null).filter(value !== null);
-    let random = empty[Math.floor(Math.random() * empty.length)];
-    makeMove(random, "O");
+    let emptyCells = board.map((value, index) => value === "" ? index : null).filter(value !== null);
+    let randomIndex = empty[Math.floor(Math.random() * emptyCells.length)];
+
+    makeMove(randomIndex, "O");
 }
 
 function checkWinner() {
     for (let combo of winConditions) {
         let [a, b, c] = combo;
 
-        if (board[a] && board[a] === board[b] && board[a] === board[c]);
-        statusText.textContent =  `${board[a]} wins 💜`;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]){
+        statusText.textContent =  `${board[a]} wins 🎉`;
         gameActive = false;
         return;
+        }
     }
 }
     if (!board.includes("")) {
@@ -66,21 +67,14 @@ function checkWinner() {
         gameActive = false;
     }
 
-    function playerTurnText() {
-        return vsAI
-        ? `Player ${currentPlayer}'s turn`
-        : `Player ${currentPlayer}'s turn`
-    }
 function resetGame() {
     board = ["", "", "", "", "", "", "","",""];
     gameActive = true;
     currentPlayer = "X";
-
-    statusText.textContent = playerTurnText();
+    statusText.textContent = "Player X's turn";
 
     cells.forEach(cell =>{
         cell.textContent = "";
-        cell.classList.remove("winner");
     });
 }
 
@@ -91,8 +85,4 @@ function toggleAI() {
     statusText.textContent = vsAI
     ? "Playing vs AI (You = X)"
     : "2 Player Mode";
-}
-
-function playerTurnText() {
-    return "Player" + currentPlayer + "turn";
 }
