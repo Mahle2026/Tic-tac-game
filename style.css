@@ -108,7 +108,7 @@ button:active{
 
     .board{
         width: 90%;
-        margin-top: 50;
+        margin-top: 50px;
         max-width: 350px;
         gap: 8px;
         margin-top: 80px;
