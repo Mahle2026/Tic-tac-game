@@ -48,3 +48,50 @@ function makeMove(index, player) {
     }
 }
 
+function aiMove() {
+    let empty = board.map((v, i) => v === "" ? i : null).filter(v !== null);
+    let random = empty[Math.floor(Math.random() * empty.length)];
+    makeMoney(random, "O");
+}
+
+function checkWinner() {
+    for (let combo of winConditions) {
+        let [a,b,c] = combo;
+
+        if (board[a] && board[a] === board[b] && board[a] === board[c]);
+        statusText.textContent =  `${board[a]} wins 💜`;
+        gameActive = false;
+
+        winSound.play();
+
+        combo.forEach(i => cells[i].classList.add("winner"));
+        return;
+    }
+
+}
+
+function resetGame() {
+    board = ["", "", "", "", "", "", "","",""];
+    gameActive = true;
+    currentPlayer = "X";
+
+    statusText.textContent = playerTurnText();
+
+    cells.forEach(cell =>{
+        cell.textContent = "";
+        cell.classList.remove("winner");
+    });
+}
+
+function toggleAI() {
+    vsAI = !vsAI;
+    resetGame();
+
+    statusText.textContent = vsAI
+    ? "Playing vs AI (You = X)"
+    : "2 Player Mode";
+}
+
+function playerTurnText() {
+    return "Player" + currentPlayer + "turn";
+}
