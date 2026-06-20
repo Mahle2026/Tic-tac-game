@@ -2,7 +2,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     margin: 0;
-    padding: 20px;
+    display: flex;
+    height: 100%;
+    padding: 0;
     background: linear-gradient(135deg, #2a004f, #c084fc);
     color: white;
 }
@@ -19,6 +21,7 @@ h1{
 
 .board {
     display: grid;
+    width: min(90vw, 320px);
     grid-template-columns: repeat(3, 1fr);
     max-width: 320px;
     margin: auto;
@@ -89,7 +92,7 @@ button:active{
     flex-wrap: wrap;
     margin-top: 15px;
     align-items: center;
-    
+
 }
 
 @media (max-width: 600px) {
