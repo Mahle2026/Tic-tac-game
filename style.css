@@ -97,7 +97,9 @@ button:active{
 
 @media (max-width: 600px) {
     body{
-        padding: 15px;
+        padding-top: 60px;
+        padding-bottom: 10px;
+        justify-content: flex-start;
     }
 
     h1{
