@@ -18,13 +18,14 @@ const winConditions = [
 [2,4,6]
 ];
 
-cells.forEach(cell =>{
-    cell.addEventListener("click", () =>{
+cells.forEach((cell, index) =>{
+    cell.addEventListener("click", () => {
         if (board[index] !== "" || !gameActive) return;
 
         makeMove(index, currentPlayer);
         
         if (vsAI && gameActive && currentPlayer === "O") {
+            statusText.textContent = "Computer is thinking...";
             setTimeout(aiMove, 400);
         }
     });
@@ -40,36 +41,36 @@ function makeMove(index, player) {
     if(!gameActive) return;
 
     currentPlayer = player === "X" ? "O" : "X";
+    statusText.textContent = playerTurnText();
     
-    if (vsAI && currentPlayer === "O") {
-        statusText.textContent = "Computer is thinking ...";
-    } else {
-        statusText.textContent = playerTurnText();
-    }
 }
 
 function aiMove() {
-    let empty = board.map((v, i) => v === "" ? i : null).filter(v !== null);
+    let empty = board.map((value, index) => value === "" ? index : null).filter(value !== null);
     let random = empty[Math.floor(Math.random() * empty.length)];
-    makeMoney(random, "O");
+    makeMove(random, "O");
 }
 
 function checkWinner() {
     for (let combo of winConditions) {
-        let [a,b,c] = combo;
+        let [a, b, c] = combo;
 
         if (board[a] && board[a] === board[b] && board[a] === board[c]);
         statusText.textContent =  `${board[a]} wins 💜`;
         gameActive = false;
-
-        winSound.play();
-
-        combo.forEach(i => cells[i].classList.add("winner"));
         return;
     }
-
 }
+    if (!board.includes("")) {
+        statusText.textContent = "It's a draw!";
+        gameActive = false;
+    }
 
+    function playerTurnText() {
+        return vsAI
+        ? `Player ${currentPlayer}'s turn`
+        : `Player ${currentPlayer}'s turn`
+    }
 function resetGame() {
     board = ["", "", "", "", "", "", "","",""];
     gameActive = true;
