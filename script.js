@@ -51,11 +51,21 @@ function makeMove(index, player) {
 }
 
 function aiMove() {
-    let emptyCells = board.map((value, index) => value === "" ? index : null).filter(value !== null);
+    let emptyCells =[];
+     board.forEach((value, index) =>{
+        if (value === "") {
+            emptyCells.push(index);
+        }
+     });
 
-    if (emptyCells.length === O) return;
+    if (emptyCells.length === O) {
 
-    let randomIndex = empty[Math.floor(Math.random() * emptyCells.length)];
+    return;
+
+    }
+
+    let randomIndex = empty[Math.floor(Math.random() * 
+        emptyCells.length)];
 
     makeMove(randomIndex, "O");
 }
