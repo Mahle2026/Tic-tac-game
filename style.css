@@ -65,17 +65,22 @@ button {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
-    background: #4c1d95;
+    background: linear-gradient(135deg, #ff63c7, #ffb6e6);
+    font-weight: bold;
     color: white;
     cursor: pointer;
-    transition: 0.2s
+    transition: 0.2s;
+    box-shadow: 0 0 10px rgba(255,110,190,0.4);
 }
 
 button:hover {
-    background: #6d28d9;
     transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(255,110,199,0.7);
 }
 
+button:active{
+    transform: scale(0.98);
+}
 
 @media (max-width: 600px) {
     body{
