@@ -115,6 +115,7 @@ button:active{
     }
 
     .cell {
+        margin-bottom: 30px;
         font-size: 60px;
         border-radius:12px;
     }
