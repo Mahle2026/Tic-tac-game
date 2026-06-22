@@ -10,6 +10,8 @@ body{
 
 .game-container {
     text-align: center;
+    justify-content: center;
+    margin-top: 20px;
 }
  h1{
     color: white;
