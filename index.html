@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+    <div class="game-container">
     <h1>💜 XO Game</h1>
-    <div class="status" id="status">
-        Players X's Turn
-    </div>
 
     <div class="board" id="board">
         <div class="cell" data-index="0"></div>
@@ -25,7 +24,8 @@
         <div class="cell" data-index="8"></div>
     </div>
 
-    <div class="buttons">
+    <h2 id="status"> Player X's Turn</h2>
+
         <button onclick="resetGame()">Restart</button>
     </div>
     

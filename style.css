@@ -8,24 +8,18 @@ body{
     color: black;
 }
 
-h1{
-    text-shadow: 0 0 12px #d8b4f8;
+.game-container {
+    text-align: center;
 }
-
-.status {
-    color: #e9d5ff;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
+ h1{
+    color: white;
+    margin-bottom: 20px;
+ }
 
 .board {
     display: grid;
-    width: 90vw;
-    max-width: 350px;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 320px;
-    margin: auto;
+    grid-template-columns: repeat(3, 100px);
+    margin-bottom: 20px;
     gap: 10px;
 }
 
@@ -33,7 +27,7 @@ h1{
     width: 100px;
     height:100px;
     aspect-ratio: 1/1;
-    background: #7c3aed;
+    background: #d8b4fe;
     border-radius: 14px;
     font-size: 2.8rem;
     font-weight: bold;
@@ -46,100 +40,29 @@ h1{
 }
 
 
-.cell:hover {
-    transform: scale(1.05);
-    background: #a855f7;
-}
-
 .cell.x {
-    color: #ffffff;
+    color: #7e22ec;
+    background: #f3e8ff;
     text-shadow: 0 0 10px #ffffff, 0 0 20px #a855f7;
 }
 
 .cell.o {
-    color: #00e5ff;
+    color: #2563eb;
+    background: #dbeafe;
     text-shadow: 0 0 10px #00e5ff, 0 0 20px #3b82f6;
 }
 
-
-.winner {
-    background: #22c55e !important;
-    box-shadow: 0 0 25px #22c55e;
-}
-
-
-button {
-    margin: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #ff63c7, #ffb6e6);
-    font-weight: bold;
+#status {
     color: white;
+    margin-bottom:15px;
+}
+
+#restartBtn{
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background: #d8b4fe;
+    color:#4c1d95;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 0 10px rgba(255,110,190,0.4);
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 18px rgba(255,110,199,0.7);
-}
-
-button:active{
-    transform: scale(0.98);
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-    align-items: center;
-
-}
-
-@media (max-width: 600px) {
-    body{
-        padding-top: 60px;
-        padding-bottom: 10px;
-        justify-content: flex-start;
-    }
-
-    h1{
-        font-size: 40px;
-    }
-
-    p{
-        color: #ff63c7;
-    }
-
-    .board{
-        width: 90%;
-        margin-top: 50px;
-        max-width: 350px;
-        gap: 8px;
-        margin-bottom: 30px;
-    }
-
-    .cell {
-        font-size: 60px;
-        border-radius:12px;
-    }
-
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        gap:10px;
-        margin-bottom: 15px;
-
-    }
-
-    button{
-        width: 80%;
-        font-size: 16px;
-        padding: 12px;
-    }
 }
